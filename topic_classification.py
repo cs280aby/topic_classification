@@ -16,11 +16,11 @@ WAIT_TIME = 30
 BINARY = True
 # parameters for input file processing
 # change PROCESSED_INPUT_DIR to the directoy where you want to place the processed input files
-PROCESSED_INPUT_DIR = "processed-test-n2"
-# setting PRE_PROCESS_INPUT = True will process the intput files AND proceed to produce SVM input files using the features 
-#    retrieved from all the training files (based on N_GRAM)
+PROCESSED_INPUT_DIR = "processed-test-n3"
+# setting PRE_PROCESS_INPUT = True will process the intput files AND proceed to produce SVM input files using the 
+#    in INDEX_FILE and N_GRAM configuration
 PRE_PROCESS_INPUT = False
-N_GRAM = 2
+N_GRAM = 3
 
 # parameters for creating svm input files based on given features
 # use this for pool of N-gram features
@@ -28,7 +28,8 @@ INDEX_FILE = "indexes_n_all.txt"
 # this contains the directories of the processed files based on given N-gram
 PROCESSED_INPUT_DIR_N = [
     "processed-test-n1", 
-    "processed-test-n2"
+    "processed-test-n2",
+    "processed-test-n3" 
 ]
 # change OUTPUT_DIR to the directoy where you want to place the svm input files
 OUTPUT_DIR = "pre_svm-test"
@@ -128,8 +129,8 @@ def constructTableSubdir(feature_list, l_input_dir, l_label, sub_dir, lfiles, pr
         
     pri_index_table.fillna(0, inplace=True)
     pri_index_table.columns = [range(0, pri_index_table.shape[1])]
-    #print "label: %s sub_dir: %s" % (l_label, sub_dir)
-    #print pri_index_table    
+    print "label: %s sub_dir: %s" % (l_label, sub_dir)
+    print pri_index_table    
     constructSVMInputFiles(pri_index_table, l_label, sub_dir)
 
     
@@ -257,9 +258,12 @@ def main():
     # use folders 1-3 for training, folder 4 for testing
     # edit sub_dir_list below to indicate list of folders to be processed
     sub_dir_list = ["1"]
- 
+    
  
     if PRE_PROCESS_INPUT:
+        os.mkdir(PROCESSED_INPUT_DIR)
+        if not os.path.exists(OUTPUT_DIR):
+           os.mkdir(OUTPUT_DIR)
         preProcessInputFiles(cat_list, sub_dir_list)
         preGetFeatures(cat_list, sub_dir_list)
     
