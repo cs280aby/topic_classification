@@ -1,3 +1,7 @@
+# topic_classification.py
+
+This accepts input raw/unprocessed input files and converts these to SVM input files (with the correct format) as output based on the provided features/indexes. 
+
 ## PREREQUISITES:
 
 1) Place this script in the same directory as the raw/unprocessed input files.
@@ -54,4 +58,6 @@ $ python topic_classification.py --proc_input_dir cat_input_dir --n_gram 2  --in
 # NOTES:
 
 - Terms indexes and features/attributes may be used interchangeably.
+- input files = raw/unprocessed input files
+- output files/output of the script = SVM input files
 
