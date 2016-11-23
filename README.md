@@ -1,5 +1,6 @@
-# PREREQUISITES:
+## PREREQUISITES:
 1) Place this script in the same directory as the raw/unprocessed input files.
+
 2) The raw/unprocessed input files should be in the following directories:
         "alt.atheism", 
         "comp.graphics", 
