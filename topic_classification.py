@@ -379,7 +379,7 @@ def main():
         print "Getting indexes above minimum frequency.."
         words = getAllIndexes(cat_list, sub_dir_list)
         feature_counts = Counter(words)
-        feature_list =  [word for word, count in feature_counts.items() if count > MIN_WORD_FREQUENCY]
+        feature_list =  [word for word, count in feature_counts.items() if count > int(MIN_WORD_FREQUENCY)]
         print "New feature vector length: %d" % (len(feature_list))
         f = open(os.path.join(INDEX_FILE), "w")
         f.writelines(["%s\n" % feature for feature in feature_list])
